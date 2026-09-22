@@ -64,7 +64,6 @@ export default function Footer() {
             />
 
             <div className="absolute inset-0 opacity-60" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.7) 0 1px, transparent 1px)', backgroundSize: '122px 84px', backgroundPosition: '15px 12px', animation: 'fade-in 2s ease both' }} />
-            <div className="absolute inset-0 opacity-35" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.45) 0 1px, transparent 1px)', backgroundSize: '71px 113px', backgroundPosition: '42px 56px', animation: 'fade-in 2s ease 0.4s both' }} />
 
             <div className="absolute left-1/2 top-44 h-[310px] w-[310px] -translate-x-1/2 rounded-full md:h-[440px] md:w-[440px]" style={{ filter: `brightness(${0.75 + scrollProgress * 0.45})`, transition: 'filter 700ms ease' }}>
               <div className="absolute -inset-5 rounded-full border border-white/[0.035] shadow-[0_0_0_11px_rgba(255,255,255,0.025),0_0_0_24px_rgba(255,255,255,0.02)]" />
