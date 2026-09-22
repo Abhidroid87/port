@@ -13,24 +13,24 @@ const heroBg =
 const services: Service[] = [
   {
     num: '01',
+    title: 'MOTION',
+    desc: 'Motion design is not just about movement — it is storytelling through rhythm, texture, and visual energy.',
+    tags: ['UI Animation', '3D Motion', 'Video Editing', 'Sound Design'],
+    image: 'https://images.pexels.com/photos/8817542/pexels-photo-8817542.jpeg?auto=compress&cs=tinysrgb&w=800',
+  },
+  {
+    num: '02',
     title: 'BRANDING',
     desc: 'We build brands from the ground up — identity, voice, strategy, and visual language that resonate and endure.',
     tags: ['Logo Design', 'Brand Strategy', 'Visual Identity', 'Guidelines'],
     image: 'https://images.pexels.com/photos/7661590/pexels-photo-7661590.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
-    num: '02',
-    title: 'ART DIRECTION',
-    desc: 'Every detail matters. We craft cohesive visual narratives across every touchpoint to tell your story with clarity.',
-    tags: ['Creative Direction', 'Photography', 'Styling', 'Set Design'],
-    image: 'https://images.pexels.com/photos/36991335/pexels-photo-36991335.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
     num: '03',
-    title: 'MOTION',
-    desc: 'Motion design is not just about movement; it\u2019s about storytelling. Each animation we create communicates clearly and effectively.',
-    tags: ['UI Animation', '3D Motion', 'Video Editing', 'Sound Design'],
-    image: 'https://images.pexels.com/photos/8817542/pexels-photo-8817542.jpeg?auto=compress&cs=tinysrgb&w=800',
+    title: 'GRAPHIC',
+    desc: 'We turn ideas into striking visual systems that give every campaign, screen, and story a distinct point of view.',
+    tags: ['Art Direction', 'Editorial Design', 'Campaigns', 'Typography'],
+    image: 'https://images.pexels.com/photos/36991335/pexels-photo-36991335.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 
@@ -160,14 +160,6 @@ export default function Home() {
 
       {/* Services */}
       <section className="py-32 px-6 md:px-10 max-w-[1600px] mx-auto">
-        <div className="flex items-center justify-between mb-16">
-          <div className="flex items-center gap-3">
-            <span className="text-xs text-white/30 font-mono">02</span>
-            <span className="text-sm text-white/40 tracking-widest uppercase">Services</span>
-          </div>
-          <span className="text-sm text-white/30">[Over 30+ Skillset]</span>
-        </div>
-
         <div ref={servicesSectionRef}>
           <ServiceList services={services} />
         </div>
