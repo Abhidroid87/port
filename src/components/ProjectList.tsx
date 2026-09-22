@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { getDriveEmbedUrl, isDriveLink } from '@/lib/drive';
 
 export type Project = {
   slug?: string;
@@ -17,26 +18,8 @@ type ProjectListProps = {
   onProjectClick?: (project: Project) => void;
 };
 
-function getDriveVideoUrl(url: string) {
-  const match = url.match(/\/d\/([^/]+)/);
-  return match ? `https://drive.google.com/uc?export=download&id=${match[1]}` : url;
-}
-
 export default function ProjectList({ projects, onProjectClick }: ProjectListProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
-
-  useEffect(() => {
-    videoRefs.current.forEach((video, index) => {
-      if (!video) return;
-      if (index === hoveredIndex) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-        video.currentTime = 0;
-      }
-    });
-  }, [hoveredIndex]);
 
   return (
     <div className="relative">
@@ -44,6 +27,7 @@ export default function ProjectList({ projects, onProjectClick }: ProjectListPro
         {projects.map((proj, i) => {
           const isActive = hoveredIndex === i;
           const projectUrl = proj.slug ? `/work/${proj.slug}` : undefined;
+          const driveEmbed = proj.video && isDriveLink(proj.video) ? getDriveEmbedUrl(proj.video) : null;
 
           return (
             <div
@@ -63,19 +47,15 @@ export default function ProjectList({ projects, onProjectClick }: ProjectListPro
                   pointerEvents: 'none',
                 }}
               >
-                {proj.video ? (
-                  <video
-                    ref={(video) => {
-                      videoRefs.current[i] = video;
-                    }}
-                    src={getDriveVideoUrl(proj.video)}
-                    poster={proj.image}
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    className="h-full w-full object-cover"
+                {driveEmbed ? (
+                  <iframe
+                    src={driveEmbed}
+                    className="pointer-events-none h-full w-full"
+                    title={proj.title}
+                    allow="autoplay"
                   />
+                ) : proj.video ? (
+                  <HoverVideo src={proj.video} poster={proj.image} active={isActive} />
                 ) : (
                   <img src={proj.image} alt={proj.title} className="h-full w-full object-cover" />
                 )}
@@ -141,16 +121,40 @@ export default function ProjectList({ projects, onProjectClick }: ProjectListPro
               </div>
 
               <div className="mt-4 overflow-hidden rounded-lg md:hidden">
-                {proj.video ? (
-                  <video src={getDriveVideoUrl(proj.video)} poster={proj.image} muted loop playsInline className="h-48 w-full object-cover" />
-                ) : (
-                  <img src={proj.image} alt={proj.title} className="h-48 w-full object-cover" loading="lazy" />
-                )}
+                <img src={proj.image} alt={proj.title} className="h-48 w-full object-cover" loading="lazy" />
               </div>
             </div>
           );
         })}
       </div>
     </div>
+  );
+}
+
+function HoverVideo({ src, poster, active }: { src: string; poster: string; active: boolean }) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (active) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+  }, [active]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      className="h-full w-full object-cover"
+    />
   );
 }

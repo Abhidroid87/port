@@ -1,19 +1,16 @@
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { useRouter } from '@/lib/router';
+import { getDriveEmbedUrl, isDriveLink } from '@/lib/drive';
 import type { Project } from '@/components/ProjectList';
 
 type ProjectDetailProps = {
   project: Project;
 };
 
-function getDriveVideoUrl(url: string) {
-  const match = url.match(/\/d\/([^/]+)/);
-  return match ? `https://drive.google.com/uc?export=download&id=${match[1]}` : url;
-}
-
 export default function ProjectDetail({ project }: ProjectDetailProps) {
   const { navigate } = useRouter();
-  const videoUrl = project.video ? getDriveVideoUrl(project.video) : null;
+  const driveEmbed = project.video && isDriveLink(project.video) ? getDriveEmbedUrl(project.video) : null;
+  const directVideo = project.video && !isDriveLink(project.video) ? project.video : null;
 
   return (
     <div className="bg-[#0a0a0a]">
@@ -32,9 +29,19 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         </div>
 
         <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-white/10 bg-[#141414] shadow-2xl shadow-black/40">
-          {videoUrl ? (
+          {driveEmbed ? (
+            <div className="relative aspect-video w-full">
+              <iframe
+                src={driveEmbed}
+                className="absolute inset-0 h-full w-full"
+                title={project.title}
+                allow="autoplay; fullscreen"
+                allowFullScreen
+              />
+            </div>
+          ) : directVideo ? (
             <video
-              src={videoUrl}
+              src={directVideo}
               poster={project.image}
               controls
               autoPlay
