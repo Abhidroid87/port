@@ -201,3 +201,9 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Floating label animation for globe orbit tags */
+@keyframes float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -8px); }
+}
