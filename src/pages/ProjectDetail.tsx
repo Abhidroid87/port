@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { useRouter } from '@/lib/router';
 import type { Project } from '@/components/ProjectList';
@@ -8,11 +9,26 @@ type ProjectDetailProps = {
 
 export default function ProjectDetail({ project }: ProjectDetailProps) {
   const { navigate } = useRouter();
+  const [showOverlay, setShowOverlay] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowOverlay(false);
+      setMounted(true);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="bg-[#0a0a0a]">
+      {showOverlay && <div className="page-overlay" />}
+
       <section className="mx-auto max-w-[1600px] px-6 pb-24 pt-32 md:px-10 md:pb-36 md:pt-40">
-        <div className="mb-12 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-white/40 md:mb-20">
+        <div
+          className={`mb-12 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-white/40 md:mb-20 ${mounted ? 'detail-enter detail-fade-in' : 'detail-enter'}`}
+          style={{ animationDelay: '0.2s' }}
+        >
           <button
             type="button"
             onClick={() => navigate('/work')}
@@ -25,7 +41,10 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           <span>{project.year}</span>
         </div>
 
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-white/10 bg-[#141414] shadow-2xl shadow-black/40">
+        <div
+          className={`mx-auto max-w-5xl overflow-hidden rounded-2xl border border-white/10 bg-[#141414] shadow-2xl shadow-black/40 ${mounted ? 'detail-enter detail-scale-in' : 'detail-enter'}`}
+          style={{ animationDelay: '0.3s' }}
+        >
           {project.video ? (
             <video
               src={project.video}
@@ -43,22 +62,26 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         </div>
 
         <div className="mt-16 grid gap-12 md:mt-24 md:grid-cols-12 md:gap-8">
-          <div className="md:col-span-7">
+          <div className={`md:col-span-7 ${mounted ? 'detail-enter detail-fade-up' : 'detail-enter'}`} style={{ animationDelay: '0.5s' }}>
             <p className="mb-6 font-mono text-sm text-[#c8ff00]">[{project.num}]</p>
             <h1 className="font-display text-5xl font-bold uppercase leading-[0.9] tracking-[-0.06em] text-white md:text-8xl">
               {project.title}
             </h1>
           </div>
 
-          <div className="md:col-span-4 md:col-start-9">
+          <div className={`md:col-span-4 md:col-start-9 ${mounted ? 'detail-enter detail-fade-up' : 'detail-enter'}`} style={{ animationDelay: '0.7s' }}>
             <p className="mb-10 text-xs uppercase tracking-[0.18em] text-white/35">About this project</p>
             <p className="text-lg leading-relaxed text-white/65">{project.description}</p>
 
             <div className="mt-10 border-t border-white/10 pt-6">
               <p className="mb-4 text-xs uppercase tracking-[0.18em] text-white/35">Services</p>
               <div className="flex flex-wrap gap-2">
-                {project.services?.map((service) => (
-                  <span key={service} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-white/60">
+                {project.services?.map((service, index) => (
+                  <span
+                    key={service}
+                    className={`tag-pop rounded-full border border-white/15 px-3 py-1.5 text-xs text-white/60 ${mounted ? '' : ''}`}
+                    style={{ animationDelay: `${0.9 + index * 0.1}s` }}
+                  >
                     {service}
                   </span>
                 ))}
@@ -70,7 +93,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         <button
           type="button"
           onClick={() => navigate('/contact')}
-          className="group mt-20 flex items-center gap-3 border-b border-white/20 pb-3 text-sm uppercase tracking-[0.16em] text-white transition-colors hover:border-[#c8ff00] hover:text-[#c8ff00]"
+          className={`group mt-20 flex items-center gap-3 border-b border-white/20 pb-3 text-sm uppercase tracking-[0.16em] text-white transition-colors hover:border-[#c8ff00] hover:text-[#c8ff00] ${mounted ? 'detail-enter detail-fade-up' : 'detail-enter'}`}
+          style={{ animationDelay: '1.1s' }}
         >
           Start a similar project
           <ArrowUpRight size={16} className="transition-transform group-hover:rotate-45" />

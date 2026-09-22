@@ -207,3 +207,78 @@ body {
   0%, 100% { transform: translate(-50%, 0); }
   50% { transform: translate(-50%, -8px); }
 }
+
+/* Page transition overlay wipe */
+@keyframes overlay-in {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+@keyframes overlay-out {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+.page-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: #c8ff00;
+  pointer-events: none;
+  animation: overlay-in 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards,
+             overlay-out 0.5s cubic-bezier(0.76, 0, 0.24, 1) 0.35s forwards;
+}
+
+/* Detail page staggered entrance */
+@keyframes detail-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+@keyframes detail-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes detail-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.detail-enter {
+  opacity: 0;
+}
+.detail-enter.detail-fade-up {
+  animation: detail-fade-up 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.detail-enter.detail-scale-in {
+  animation: detail-scale-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.detail-enter.detail-fade-in {
+  animation: detail-fade-in 1s ease forwards;
+}
+
+/* Tag pop-in for service tags */
+@keyframes tag-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.tag-pop {
+  opacity: 0;
+  animation: tag-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
