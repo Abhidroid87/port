@@ -3,8 +3,9 @@ import { useRouter } from '@/lib/router';
 import { useReveal } from '@/lib/useReveal';
 import Marquee from '@/components/Marquee';
 import Magnetic from '@/components/Magnetic';
-import ProjectList, { type Project } from '@/components/ProjectList';
+import ProjectList from '@/components/ProjectList';
 import ServiceList, { type Service } from '@/components/ServiceList';
+import { projects } from '@/lib/projects';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
 const heroBg = '/assets/hero-bg.jpg';
@@ -33,32 +34,7 @@ const services: Service[] = [
   },
 ];
 
-const featuredWorks: Project[] = [
-  {
-    title: 'LEVI COLWILL',
-    category: 'MODELLING 3D GRAPHIC',
-    num: '01',
-    image: '/assets/work-levi.jpg',
-  },
-  {
-    title: 'THE NEWS',
-    category: 'MOBILE APP UI',
-    num: '02',
-    image: '/assets/work-news.jpg',
-  },
-  {
-    title: 'THEO AGENCY',
-    category: 'REBRAND PROJECT',
-    num: '03',
-    image: '/assets/work-theo.jpg',
-  },
-  {
-    title: 'HORIZON',
-    category: 'LAB FLOW',
-    num: '04',
-    image: '/assets/work-horizon.jpg',
-  },
-];
+const featuredWorks = projects.slice(0, 4);
 
 export default function Home() {
   const { navigate } = useRouter();
@@ -180,7 +156,7 @@ export default function Home() {
           </button>
         </div>
 
-        <ProjectList projects={featuredWorks} onProjectClick={() => navigate('/work')} />
+        <ProjectList projects={featuredWorks} onProjectClick={(project) => navigate(`/work/${project.slug}`)} />
       </section>
 
       {/* Stats marquee */}

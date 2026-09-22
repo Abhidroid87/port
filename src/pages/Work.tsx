@@ -1,48 +1,10 @@
 import { useReveal } from '@/lib/useReveal';
 import { useRouter } from '@/lib/router';
 import Marquee from '@/components/Marquee';
-import ProjectList, { type Project } from '@/components/ProjectList';
+import ProjectList from '@/components/ProjectList';
+import { projects } from '@/lib/projects';
 
 const workBg = '/assets/work-hero-bg.jpg';
-
-const projects: Project[] = [
-  {
-    title: 'LEVI COLWILL',
-    category: 'MODELLING 3D GRAPHIC',
-    num: '01',
-    image: '/assets/work-levi.jpg',
-  },
-  {
-    title: 'THE NEWS',
-    category: 'MOBILE APP UI',
-    num: '02',
-    image: '/assets/work-news.jpg',
-  },
-  {
-    title: 'THEO AGENCY',
-    category: 'REBRAND PROJECT',
-    num: '03',
-    image: '/assets/work-theo.jpg',
-  },
-  {
-    title: 'HORIZON',
-    category: 'LAB FLOW',
-    num: '04',
-    image: '/assets/work-horizon.jpg',
-  },
-  {
-    title: 'AURA',
-    category: 'WEB DESIGN',
-    num: '05',
-    image: '/assets/work-aura.jpg',
-  },
-  {
-    title: 'ECHO',
-    category: 'BRAND IDENTITY',
-    num: '06',
-    image: '/assets/work-echo.jpg',
-  },
-];
 
 export default function Work() {
   const { navigate } = useRouter();
@@ -90,7 +52,7 @@ export default function Work() {
           <span className="text-sm text-white/30">[Over 30+ Creations]</span>
         </div>
 
-        <ProjectList projects={projects} onProjectClick={() => navigate('/contact')} />
+        <ProjectList projects={projects} onProjectClick={(project) => navigate(`/work/${project.slug}`)} />
       </section>
 
       {/* Marquee */}
