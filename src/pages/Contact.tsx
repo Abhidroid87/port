@@ -4,10 +4,8 @@ import { useRouter } from '@/lib/router';
 import FAQAccordion from '@/components/FAQAccordion';
 import { Send, MapPin, Phone, Check, ArrowUpRight } from 'lucide-react';
 
-const contactBg =
-  'https://images.pexels.com/photos/355904/pexels-photo-355904.jpeg?auto=compress&cs=tinysrgb&w=1920';
-const locationImage =
-  'https://images.pexels.com/photos/9594093/pexels-photo-9594093.jpeg?auto=compress&cs=tinysrgb&w=1200';
+const contactBg = '/assets/contact-bg.jpg';
+const locationImage = '/assets/contact-location.jpg';
 
 export default function Contact() {
   const { navigate } = useRouter();
@@ -128,7 +126,7 @@ export default function Contact() {
               className="group img-zoom relative rounded-2xl overflow-hidden aspect-[4/3] w-full"
             >
               <img
-                src="https://images.pexels.com/photos/35052791/pexels-photo-35052791.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="/assets/contact-works.jpg"
                 alt="View Our Works"
                 className="w-full h-full object-cover"
               />

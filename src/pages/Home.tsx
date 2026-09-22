@@ -7,8 +7,7 @@ import ProjectList, { type Project } from '@/components/ProjectList';
 import ServiceList, { type Service } from '@/components/ServiceList';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
-const heroBg =
-  'https://images.pexels.com/photos/5269529/pexels-photo-5269529.jpeg?auto=compress&cs=tinysrgb&w=1920';
+const heroBg = '/assets/hero-bg.jpg';
 
 const services: Service[] = [
   {
@@ -16,21 +15,21 @@ const services: Service[] = [
     title: 'MOTION',
     desc: 'Motion design is not just about movement — it is storytelling through rhythm, texture, and visual energy.',
     tags: ['UI Animation', '3D Motion', 'Video Editing', 'Sound Design'],
-    image: 'https://images.pexels.com/photos/8817542/pexels-photo-8817542.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/service-motion.jpg',
   },
   {
     num: '02',
     title: 'BRANDING',
     desc: 'We build brands from the ground up — identity, voice, strategy, and visual language that resonate and endure.',
     tags: ['Logo Design', 'Brand Strategy', 'Visual Identity', 'Guidelines'],
-    image: 'https://images.pexels.com/photos/7661590/pexels-photo-7661590.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/service-branding.jpg',
   },
   {
     num: '03',
     title: 'GRAPHIC',
     desc: 'We turn ideas into striking visual systems that give every campaign, screen, and story a distinct point of view.',
     tags: ['Art Direction', 'Editorial Design', 'Campaigns', 'Typography'],
-    image: 'https://images.pexels.com/photos/36991335/pexels-photo-36991335.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/service-graphic.jpg',
   },
 ];
 
@@ -39,25 +38,25 @@ const featuredWorks: Project[] = [
     title: 'LEVI COLWILL',
     category: 'MODELLING 3D GRAPHIC',
     num: '01',
-    image: 'https://images.pexels.com/photos/29376747/pexels-photo-29376747.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/work-levi.jpg',
   },
   {
     title: 'THE NEWS',
     category: 'MOBILE APP UI',
     num: '02',
-    image: 'https://images.pexels.com/photos/35052818/pexels-photo-35052818.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/assets/work-news.jpg',
   },
   {
     title: 'THEO AGENCY',
     category: 'REBRAND PROJECT',
     num: '03',
-    image: 'https://images.pexels.com/photos/8489953/pexels-photo-8489953.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/assets/work-theo.jpg',
   },
   {
     title: 'HORIZON',
     category: 'LAB FLOW',
     num: '04',
-    image: 'https://images.pexels.com/photos/8533136/pexels-photo-8533136.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/assets/work-horizon.jpg',
   },
 ];
 

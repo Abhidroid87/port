@@ -3,45 +3,44 @@ import { useRouter } from '@/lib/router';
 import Marquee from '@/components/Marquee';
 import ProjectList, { type Project } from '@/components/ProjectList';
 
-const workBg =
-  'https://images.pexels.com/photos/7828655/pexels-photo-7828655.jpeg?auto=compress&cs=tinysrgb&w=1920';
+const workBg = '/assets/work-hero-bg.jpg';
 
 const projects: Project[] = [
   {
     title: 'LEVI COLWILL',
     category: 'MODELLING 3D GRAPHIC',
     num: '01',
-    image: 'https://images.pexels.com/photos/29376747/pexels-photo-29376747.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/work-levi.jpg',
   },
   {
     title: 'THE NEWS',
     category: 'MOBILE APP UI',
     num: '02',
-    image: 'https://images.pexels.com/photos/35052818/pexels-photo-35052818.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/assets/work-news.jpg',
   },
   {
     title: 'THEO AGENCY',
     category: 'REBRAND PROJECT',
     num: '03',
-    image: 'https://images.pexels.com/photos/8489953/pexels-photo-8489953.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/assets/work-theo.jpg',
   },
   {
     title: 'HORIZON',
     category: 'LAB FLOW',
     num: '04',
-    image: 'https://images.pexels.com/photos/8533136/pexels-photo-8533136.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/assets/work-horizon.jpg',
   },
   {
     title: 'AURA',
     category: 'WEB DESIGN',
     num: '05',
-    image: 'https://images.pexels.com/photos/12198530/pexels-photo-12198530.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/assets/work-aura.jpg',
   },
   {
     title: 'ECHO',
     category: 'BRAND IDENTITY',
     num: '06',
-    image: 'https://images.pexels.com/photos/8490059/pexels-photo-8490059.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: '/assets/work-echo.jpg',
   },
 ];
 

@@ -2,10 +2,8 @@ import { useReveal } from '@/lib/useReveal';
 import Marquee from '@/components/Marquee';
 import ServiceList, { type Service } from '@/components/ServiceList';
 
-const aboutBg =
-  'https://images.pexels.com/photos/7827892/pexels-photo-7827892.jpeg?auto=compress&cs=tinysrgb&w=1920';
-const portraitImage =
-  'https://images.pexels.com/photos/19330260/pexels-photo-19330260.jpeg?auto=compress&cs=tinysrgb&w=800';
+const aboutBg = '/assets/about-bg.jpg';
+const portraitImage = '/assets/about-portrait.jpg';
 
 const services: Service[] = [
   {
@@ -13,28 +11,28 @@ const services: Service[] = [
     title: 'MOTION',
     desc: 'Motion design is not just about movement — it is storytelling through rhythm, texture, and visual energy.',
     tags: ['UI Animation', '3D Motion', 'Video Editing', 'Sound Design'],
-    image: 'https://images.pexels.com/photos/8817542/pexels-photo-8817542.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/service-motion.jpg',
   },
   {
     num: '02',
     title: 'BRANDING',
     desc: 'We craft brands that breathe. From identity systems to tone of voice, we shape every detail to create a brand that feels alive and intentional.',
     tags: ['Logo Design', 'Brand Strategy', 'Visual Identity', 'Guidelines'],
-    image: 'https://images.pexels.com/photos/7661590/pexels-photo-7661590.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/service-branding.jpg',
   },
   {
     num: '03',
     title: 'GRAPHIC',
     desc: 'We turn ideas into striking visual systems that give every campaign, screen, and story a distinct point of view.',
     tags: ['Art Direction', 'Editorial Design', 'Campaigns', 'Typography'],
-    image: 'https://images.pexels.com/photos/36991335/pexels-photo-36991335.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/service-graphic.jpg',
   },
   {
     num: '04',
     title: 'UI / UX',
     desc: 'We design interfaces that feel natural. Intuitive navigation, thoughtful interactions, and pixel-perfect layouts that users love.',
     tags: ['Wireframing', 'Prototyping', 'Design Systems', 'User Testing'],
-    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/assets/service-uiux.jpg',
   },
 ];
 
