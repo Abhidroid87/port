@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { getDriveEmbedUrl, isDriveLink } from '@/lib/drive';
 
 export type Project = {
   slug?: string;
@@ -27,7 +26,6 @@ export default function ProjectList({ projects, onProjectClick }: ProjectListPro
         {projects.map((proj, i) => {
           const isActive = hoveredIndex === i;
           const projectUrl = proj.slug ? `/work/${proj.slug}` : undefined;
-          const driveEmbed = proj.video && isDriveLink(proj.video) ? getDriveEmbedUrl(proj.video) : null;
 
           return (
             <div
@@ -47,14 +45,7 @@ export default function ProjectList({ projects, onProjectClick }: ProjectListPro
                   pointerEvents: 'none',
                 }}
               >
-                {driveEmbed ? (
-                  <iframe
-                    src={driveEmbed}
-                    className="pointer-events-none h-full w-full"
-                    title={proj.title}
-                    allow="autoplay"
-                  />
-                ) : proj.video ? (
+                {proj.video ? (
                   <HoverVideo src={proj.video} poster={proj.image} active={isActive} />
                 ) : (
                   <img src={proj.image} alt={proj.title} className="h-full w-full object-cover" />

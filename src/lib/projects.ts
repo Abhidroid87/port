@@ -7,7 +7,7 @@ export const projects: Project[] = [
     category: 'MODELLING 3D GRAPHIC',
     num: '01',
     image: '/assets/work-levi.jpg',
-    video: 'https://drive.google.com/file/d/1czoZqAxtNd7XnA80zU6WlsP9E4va_N55/view?usp=drive_link',
+    video: '/assets/project-01.mp4',
     year: '2025',
     description:
       'A moving visual study built around form, rhythm, and bold 3D composition. This project brings together modelling, animation, and graphic direction into one focused experience.',

@@ -1,6 +1,5 @@
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { useRouter } from '@/lib/router';
-import { getDriveEmbedUrl, isDriveLink } from '@/lib/drive';
 import type { Project } from '@/components/ProjectList';
 
 type ProjectDetailProps = {
@@ -9,8 +8,6 @@ type ProjectDetailProps = {
 
 export default function ProjectDetail({ project }: ProjectDetailProps) {
   const { navigate } = useRouter();
-  const driveEmbed = project.video && isDriveLink(project.video) ? getDriveEmbedUrl(project.video) : null;
-  const directVideo = project.video && !isDriveLink(project.video) ? project.video : null;
 
   return (
     <div className="bg-[#0a0a0a]">
@@ -29,19 +26,9 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         </div>
 
         <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-white/10 bg-[#141414] shadow-2xl shadow-black/40">
-          {driveEmbed ? (
-            <div className="relative aspect-video w-full">
-              <iframe
-                src={driveEmbed}
-                className="absolute inset-0 h-full w-full"
-                title={project.title}
-                allow="autoplay; fullscreen"
-                allowFullScreen
-              />
-            </div>
-          ) : directVideo ? (
+          {project.video ? (
             <video
-              src={directVideo}
+              src={project.video}
               poster={project.image}
               controls
               autoPlay
