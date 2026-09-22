@@ -7,8 +7,9 @@ import ProjectList from '@/components/ProjectList';
 import ServiceList, { type Service } from '@/components/ServiceList';
 import { projects } from '@/lib/projects';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { assetPath } from '@/lib/assets';
 
-const heroBg = '/assets/hero-bg.jpg';
+const heroBg = assetPath('assets/hero-bg.jpg');
 
 const services: Service[] = [
   {
@@ -16,21 +17,21 @@ const services: Service[] = [
     title: 'MOTION',
     desc: 'Motion design is not just about movement — it is storytelling through rhythm, texture, and visual energy.',
     tags: ['UI Animation', '3D Motion', 'Video Editing', 'Sound Design'],
-    image: '/assets/service-motion.jpg',
+    image: assetPath('assets/service-motion.jpg'),
   },
   {
     num: '02',
     title: 'BRANDING',
     desc: 'We build brands from the ground up — identity, voice, strategy, and visual language that resonate and endure.',
     tags: ['Logo Design', 'Brand Strategy', 'Visual Identity', 'Guidelines'],
-    image: '/assets/service-branding.jpg',
+    image: assetPath('assets/service-branding.jpg'),
   },
   {
     num: '03',
     title: 'GRAPHIC',
     desc: 'We turn ideas into striking visual systems that give every campaign, screen, and story a distinct point of view.',
     tags: ['Art Direction', 'Editorial Design', 'Campaigns', 'Typography'],
-    image: '/assets/service-graphic.jpg',
+    image: assetPath('assets/service-graphic.jpg'),
   },
 ];
 

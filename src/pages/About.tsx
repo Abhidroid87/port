@@ -1,9 +1,10 @@
 import { useReveal } from '@/lib/useReveal';
 import Marquee from '@/components/Marquee';
 import ServiceList, { type Service } from '@/components/ServiceList';
+import { assetPath } from '@/lib/assets';
 
-const aboutBg = '/assets/about-bg.jpg';
-const portraitImage = '/assets/about-portrait.jpg';
+const aboutBg = assetPath('assets/about-bg.jpg');
+const portraitImage = assetPath('assets/about-portrait.jpg');
 
 const services: Service[] = [
   {
@@ -11,28 +12,28 @@ const services: Service[] = [
     title: 'MOTION',
     desc: 'Motion design is not just about movement — it is storytelling through rhythm, texture, and visual energy.',
     tags: ['UI Animation', '3D Motion', 'Video Editing', 'Sound Design'],
-    image: '/assets/service-motion.jpg',
+    image: assetPath('assets/service-motion.jpg'),
   },
   {
     num: '02',
     title: 'BRANDING',
     desc: 'We craft brands that breathe. From identity systems to tone of voice, we shape every detail to create a brand that feels alive and intentional.',
     tags: ['Logo Design', 'Brand Strategy', 'Visual Identity', 'Guidelines'],
-    image: '/assets/service-branding.jpg',
+    image: assetPath('assets/service-branding.jpg'),
   },
   {
     num: '03',
     title: 'GRAPHIC',
     desc: 'We turn ideas into striking visual systems that give every campaign, screen, and story a distinct point of view.',
     tags: ['Art Direction', 'Editorial Design', 'Campaigns', 'Typography'],
-    image: '/assets/service-graphic.jpg',
+    image: assetPath('assets/service-graphic.jpg'),
   },
   {
     num: '04',
     title: 'UI / UX',
     desc: 'We design interfaces that feel natural. Intuitive navigation, thoughtful interactions, and pixel-perfect layouts that users love.',
     tags: ['Wireframing', 'Prototyping', 'Design Systems', 'User Testing'],
-    image: '/assets/service-uiux.jpg',
+    image: assetPath('assets/service-uiux.jpg'),
   },
 ];
 

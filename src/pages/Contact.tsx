@@ -3,9 +3,10 @@ import { useReveal } from '@/lib/useReveal';
 import { useRouter } from '@/lib/router';
 import FAQAccordion from '@/components/FAQAccordion';
 import { Send, MapPin, Phone, Check, ArrowUpRight } from 'lucide-react';
+import { assetPath } from '@/lib/assets';
 
-const contactBg = '/assets/contact-bg.jpg';
-const locationImage = '/assets/contact-location.jpg';
+const contactBg = assetPath('assets/contact-bg.jpg');
+const locationImage = assetPath('assets/contact-location.jpg');
 
 export default function Contact() {
   const { navigate } = useRouter();
@@ -126,7 +127,7 @@ export default function Contact() {
               className="group img-zoom relative rounded-2xl overflow-hidden aspect-[4/3] w-full"
             >
               <img
-                src="/assets/contact-works.jpg"
+                src={assetPath('assets/contact-works.jpg')}
                 alt="View Our Works"
                 className="w-full h-full object-cover"
               />

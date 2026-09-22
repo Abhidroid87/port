@@ -3,8 +3,9 @@ import { useRouter } from '@/lib/router';
 import Marquee from '@/components/Marquee';
 import ProjectList from '@/components/ProjectList';
 import { projects } from '@/lib/projects';
+import { assetPath } from '@/lib/assets';
 
-const workBg = '/assets/work-hero-bg.jpg';
+const workBg = assetPath('assets/work-hero-bg.jpg');
 
 export default function Work() {
   const { navigate } = useRouter();
